@@ -4,7 +4,7 @@ namespace API.Blog.Query
 {
     public static class Data
     {
-        public static Task GetBlog(CaliforniaContext db, BlogEntity entity)
+        public static async Task<BlogEntity> GetBlog(CaliforniaContext db, BlogEntity entity)
         {
             if (entity.BlogId == null)
             {

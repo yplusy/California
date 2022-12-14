@@ -1,6 +1,6 @@
 ﻿namespace API.Email
 {
-    public class Endpoint : Endpoint<Request, Response, Mapper>
+    public class Endpoint : Endpoint<Request, Response>
     {
         public override void Configure()
         {
@@ -10,7 +10,8 @@
 
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
-            Data.SendEmail("321968991@qq.com");
+            var data = Data.SendEmail(r.email);
+            Response.Message = data;
             await SendAsync(Response);
         }
     }

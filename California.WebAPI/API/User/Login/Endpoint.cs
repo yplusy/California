@@ -10,6 +10,7 @@ namespace API.User.Login
         {
             _dbContext = context;
         }
+
         public override void Configure()
         {
             Get("/api/login");

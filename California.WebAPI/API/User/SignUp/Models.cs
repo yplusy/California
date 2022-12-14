@@ -4,7 +4,9 @@ namespace API.User.SignUp
 {
     public class Request : AccountEntity
     {
-
+        public string AccountEmail { get; set; } // 账号
+        public string PasswordHash { get; set; } // 密码
+        public string CAPTCHA { get; set; } // 验证码
     }
 
     public class Validator : Validator<Request>
@@ -17,6 +19,6 @@ namespace API.User.SignUp
 
     public class Response
     {
-        public bool Message { get; set; }
+        public string Message { get; set; }
     }
 }

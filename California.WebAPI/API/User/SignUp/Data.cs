@@ -6,26 +6,27 @@ namespace API.User.SignUp
 {
     public static class Data
     {
-        public static bool Zc(CaliforniaContext context, string Email, string PasswordHash, string yzm)
+        public static string Zc(CaliforniaContext db, AccountEntity entity, string CAPTCHA)
         {
-            //using (var context = new CaliforniaContext())
-            //{
-            var Account = new AccountEntity
+            if (CAPTCHA == "123")
             {
-                AccountId = Guid.NewGuid().ToString(),
-                AccountEmail = Email,
-                PasswordHash = PasswordHash,
-            };
-            context.Account.Add(Account);
-            context.SaveChanges();
-            //}
-
-            //AccountEntity entity = new();
-            //entity.AccountId = Guid.NewGuid().ToString();
-            //entity.AccountEmail = Email;
-            //AppSettings.dbContext.Account.Add(entity);
-            //AppSettings.dbContext.SaveChangesAsync();
-            return true;
+                entity.AccountId = Guid.NewGuid().ToString();
+                db.Account.Add(entity);
+                try
+                {
+                    db.SaveChanges();
+                    return "true";
+                }
+                catch (Exception)
+                {
+                    return "错误";
+                    throw;
+                }
+            }
+            else
+            {
+                return "验证码错误";
+            }
         }
     }
 }

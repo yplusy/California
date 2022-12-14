@@ -16,18 +16,13 @@ namespace API.User.SignUp
             AllowAnonymous();
         }
 
-        public override Task HandleAsync(Request r, CancellationToken c)
+        public override async Task HandleAsync(Request r, CancellationToken c)
         {
+            var entity = await Map.ToEntityAsync(r);
+            var data = Data.Zc(_dbContext, entity, r.CAPTCHA);
 
-            if (Data.Zc(_dbContext, "qq@qq.com", "sa@123", null))
-            {
-                Response.Message = true;
-            }
-            else
-            {
-                Response.Message = false;
-            }
-            return SendAsync(Response);
+            Response.Message = data;
+            await SendAsync(Response);
         }
     }
 }
