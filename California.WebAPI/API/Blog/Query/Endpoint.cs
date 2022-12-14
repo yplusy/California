@@ -1,4 +1,8 @@
 ﻿using California.WebAPI.Entities;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
+using System.Text.Json;
+using California.WebAPI;
 
 namespace API.Blog.Query
 {
@@ -19,10 +23,11 @@ namespace API.Blog.Query
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
             var entity = await Map.ToEntityAsync(r);
-            var data = Data.GetBlog(_context, entity);
+            var data = await Data.GetBlog(_context, entity);
 
-            Response = await Map.FromEntityAsync(data);
-            await SendAsync(Response);
+            //Response = await Map.FromEntityAsync(data);
+            //Response = data;
+            await SendStringAsync(data.ToJson());
         }
     }
 }

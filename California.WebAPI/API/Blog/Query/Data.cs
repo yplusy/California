@@ -4,7 +4,7 @@ namespace API.Blog.Query
 {
     public static class Data
     {
-        public static async Task<BlogEntity> GetBlog(CaliforniaContext db, BlogEntity entity)
+        public static async Task<List<BlogEntity>> GetBlog(CaliforniaContext db, BlogEntity entity)
         {
             if (entity.BlogId == null)
             {
@@ -13,7 +13,7 @@ namespace API.Blog.Query
             }
             else
             {
-                var data = db.Blog.Where(b => b.BlogId == entity.BlogId).FirstOrDefault();
+                var data = db.Blog.Where(b => b.BlogId == entity.BlogId).ToList();
                 return data;
             }
         }

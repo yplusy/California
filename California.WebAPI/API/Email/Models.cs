@@ -13,7 +13,7 @@ namespace API.Email
         {
             RuleFor(r => r.email)
             .NotEmpty().WithMessage("邮箱不能为空！")
-            .EmailAddress().WithMessage("邮箱格式不正确！");
+            .EmailAddress().WithMessage("邮箱格式错误！");
         }
     }
 

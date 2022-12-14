@@ -17,6 +17,6 @@ namespace API.Blog.Query
 
     public class Response : BlogEntity
     {
-
+        
     }
 }
