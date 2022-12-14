@@ -1,16 +1,16 @@
 ﻿using California.WebAPI.Entities;
 
-namespace California.WebAPI.API.User.Login
+namespace API.User.Login
 {
-    public class Mapper : Mapper<Request, Response, UserInfoEntity>
+    public class Mapper : Mapper<Request, Response, AccountEntity>
     {
-        public override async Task<UserInfoEntity> ToEntityAsync(Request r)
+        public override async Task<AccountEntity> ToEntityAsync(Request r)
         {
-            return new UserInfoEntity()
+            return new AccountEntity()
             {
-                UserId = r.UserId,
-                UserName = r.UserName,
-                Pwd = r.Pwd,
+                AccountId = r.AccountId,
+                AccountEmail = r.AccountEmail,
+                PasswordHash = r.PasswordHash,
             };
         }
     }

@@ -1,10 +1,11 @@
-﻿namespace California.WebAPI.API.User.Account
+﻿namespace API.User.Account
 {
     public class Endpoint : Endpoint<Request, Response, Mapper>
     {
         public override void Configure()
         {
-            Post("/account");
+            Get("/api/account");
+            AllowAnonymous();
         }
 
         public override Task HandleAsync(Request r, CancellationToken c)

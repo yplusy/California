@@ -1,4 +1,4 @@
-﻿namespace API.User.Account
+﻿namespace API.Email
 {
     public class Request
     {

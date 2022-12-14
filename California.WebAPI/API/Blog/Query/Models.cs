@@ -1,8 +1,10 @@
-﻿namespace API.User.Account
+﻿using California.WebAPI.Entities;
+
+namespace API.Blog.Query
 {
     public class Request
     {
-
+        public string? BlogId { get; set; } // 博客id
     }
 
     public class Validator : Validator<Request>
@@ -13,8 +15,8 @@
         }
     }
 
-    public class Response
+    public class Response : BlogEntity
     {
-        public string Message => "This endpoint hasn't been implemented yet!";
+
     }
 }

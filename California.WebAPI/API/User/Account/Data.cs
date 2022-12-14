@@ -1,4 +1,4 @@
-﻿namespace California.WebAPI.API.User.Account
+﻿namespace API.User.Account
 {
     public static class Data
     {

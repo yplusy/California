@@ -1,6 +1,8 @@
-﻿namespace API.User.Account
+﻿using California.WebAPI.Entities;
+
+namespace API.User.SignUp
 {
-    public class Request
+    public class Request : AccountEntity
     {
 
     }
@@ -15,6 +17,6 @@
 
     public class Response
     {
-        public string Message => "This endpoint hasn't been implemented yet!";
+        public bool Message { get; set; }
     }
 }
