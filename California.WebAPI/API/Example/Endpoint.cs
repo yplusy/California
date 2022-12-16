@@ -7,7 +7,7 @@ namespace API.Example
     /// </summary>
     public class Endpoint : Endpoint<List<Request>, List<Response>, Mapper>
     {
-        public readonly CaliforniaContext _context;
+        internal readonly CaliforniaContext _context;
         public Endpoint(CaliforniaContext context)
         {
             _context = context;

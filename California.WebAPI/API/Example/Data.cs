@@ -4,10 +4,10 @@ namespace API.Example
 {
     public static class Data
     {
-        internal static async Task<List<ExampleEntity>> PostExample(CaliforniaContext db, List<ExampleEntity> entities)
+        internal static async Task<List<ExampleEntity>> PostExample(CaliforniaContext db, List<ExampleEntity> es)
         {
             #region 添加
-            foreach (var item in entities)
+            foreach (var item in es)
             {
                 item.UserId = Guid.NewGuid().ToString();
                 db.Example.Add(item);
