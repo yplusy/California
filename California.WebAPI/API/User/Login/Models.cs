@@ -20,5 +20,6 @@ namespace API.User.Login
         public IEnumerable<string> AccountPermissions { get; set; }
         public string TokenValue { get; set; }
         public DateTime TokenExpiryDate { get; set; }
+        public string Msg { get; set; }
     }
 }

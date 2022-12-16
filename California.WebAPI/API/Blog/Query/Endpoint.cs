@@ -6,7 +6,7 @@ using California.WebAPI;
 
 namespace API.Blog.Query
 {
-    public class Endpoint : Endpoint<Request, Response, Mapper>
+    public class Endpoint : Endpoint<Request, List<Response>, Mapper>
     {
         public readonly CaliforniaContext _context;
         public Endpoint(CaliforniaContext context)
@@ -25,9 +25,8 @@ namespace API.Blog.Query
             var entity = await Map.ToEntityAsync(r);
             var data = await Data.GetBlog(_context, entity);
 
-            //Response = await Map.FromEntityAsync(data);
-            //Response = data;
-            await SendStringAsync(data.ToJson());
+            Response = await Map.ToResponseAsync(data);
+            //await SendStringAsync(data.ToJson());
         }
     }
 }

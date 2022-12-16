@@ -11,9 +11,9 @@ namespace California.WebAPI.Entities
         public string UserId { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public string? UserName { get; set; }
+        public string UserName { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public string? PasswordHash { get; set; }
+        public string PasswordHash { get; set; }
     }
 }

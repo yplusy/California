@@ -15,6 +15,6 @@
 
     public class Response
     {
-        public string Message => "This endpoint hasn't been implemented yet!";
+        public string Msg => "This endpoint hasn't been implemented yet!";
     }
 }

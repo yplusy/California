@@ -5,31 +5,32 @@ namespace API.User.Login
 {
     public class Endpoint : Endpoint<Request, Response, Mapper>
     {
-        public readonly CaliforniaContext _dbContext;
+        public readonly CaliforniaContext _context;
         public Endpoint(CaliforniaContext context)
         {
-            _dbContext = context;
+            _context = context;
         }
 
         public override void Configure()
         {
-            Get("/api/login");
+            Post("/api/login");
             AllowAnonymous();
         }
 
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
             var entity = await Map.ToEntityAsync(r);
-            var data = _dbContext.Account.Where(p => p.AccountEmail == entity.AccountEmail && p.PasswordHash == entity.PasswordHash).FirstOrDefault();
+            var data = Data.Account(_context, entity);
 
-            Response.TokenValue = JWTBearer.CreateToken(
-                signingKey: Config["JwtSigningKey"],
-                expireAt: DateTime.UtcNow.AddHours(1),
-                claims: new[] { ("AccountEmail", entity.AccountEmail), ("AccountId", entity.AccountId) },
-                roles: null,
-                permissions: null);
-            Response.TokenExpiryDate = DateTime.UtcNow.AddHours(4);
-            Response.AccountEmail = entity.AccountEmail;
+            if (data != null)
+            {
+                Response = await Map.FromEntityAsync(data);
+            }
+            else
+            {
+                Response.Msg = "登录失败";
+            }
+
             await SendAsync(Response);
         }
     }

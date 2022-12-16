@@ -1,14 +1,14 @@
-﻿using California.WebAPI.Entities;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace API.Example
 {
     /// <summary>
     /// 请求体
     /// </summary>
-    public class Request : ExampleEntity
+    public class Request
     {
-
+        public string UserName { get; set; }
+        public string PasswordHash { get; set; }
     }
 
     /// <summary>

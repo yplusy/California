@@ -19,6 +19,6 @@ namespace API.User.SignUp
 
     public class Response
     {
-        public string Message { get; set; }
+        public string Msg { get; set; }
     }
 }

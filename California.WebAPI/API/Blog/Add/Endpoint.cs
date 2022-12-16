@@ -13,7 +13,6 @@ namespace API.Blog.Add
         public override void Configure()
         {
             Post("/api/blog/add");
-            AllowAnonymous();
         }
 
         public override async Task HandleAsync(Request r, CancellationToken c)
@@ -23,11 +22,11 @@ namespace API.Blog.Add
 
             if (data)
             {
-                Response.Message = data.ToString();
+                Response.Msg = data.ToString();
             }
             else
             {
-                Response.Message = (!data).ToString();
+                Response.Msg = (!data).ToString();
             }
             await SendAsync(Response);
         }

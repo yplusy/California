@@ -22,6 +22,6 @@ namespace API.Blog.Add
 
     public class Response
     {
-        public string Message { get; set; } // 消息
+        public string Msg { get; set; } // 消息
     }
 }

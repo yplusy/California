@@ -11,7 +11,7 @@
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
             var data = Data.SendEmail(r.email);
-            Response.Message = data;
+            Response.Msg = data;
             await SendAsync(Response);
         }
     }

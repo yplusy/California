@@ -8,18 +8,18 @@ namespace API.User.SignUp
     {
         public static string Zc(CaliforniaContext db, AccountEntity entity, string CAPTCHA)
         {
-            if (CAPTCHA == "123")
+            if (CAPTCHA == "string")
             {
                 entity.AccountId = Guid.NewGuid().ToString();
                 db.Account.Add(entity);
                 try
                 {
                     db.SaveChanges();
-                    return "true";
+                    return "注册成功";
                 }
                 catch (Exception)
                 {
-                    return "错误";
+                    return "注册出错";
                     throw;
                 }
             }

@@ -19,6 +19,6 @@ namespace API.Email
 
     public class Response
     {
-        public bool Message { get; set; }
+        public bool Msg { get; set; }
     }
 }

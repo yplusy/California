@@ -11,24 +11,27 @@ namespace API.Blog.Query
                 BlogId = r.BlogId
             };
         }
-        //public override async Task<List<Response>> FromEntityAsync(List<BlogEntity> entity)
-        //{
-        //    //return new Response()
-        //    //{
-        //    //    BlogId = entity.BlogId,
-        //    //    BlogTitle = entity.BlogTitle,
-        //    //    BlogContext = entity.BlogContext,
-        //    //    CreateTime = entity.CreateTime,
-        //    //};
-        //    Response response = new();
-        //    foreach (var item in entity)
-        //    {
-        //        response.BlogId = item.BlogId;
-        //        response.BlogTitle = item.BlogTitle;
-        //        response.BlogContext = item.BlogContext;
-        //        response.CreateTime = item.CreateTime;
-        //    }
-        //    return response;
-        //}
+        public async Task<List<Response>> ToResponseAsync(List<BlogEntity> entities)
+        {
+            List<Response> responses = new List<Response>();
+            try
+            {
+                Response response = new Response();
+                foreach (var item in entities)
+                {
+                    response.BlogId = item.BlogId;
+                    response.BlogTitle = item.BlogTitle;
+                    response.BlogContext = item.BlogContext;
+                    response.CreateTime = item.CreateTime;
+                    responses.Add(response);
+                }
+                return responses;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
