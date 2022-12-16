@@ -16,9 +16,9 @@ namespace API.Blog.Query
             List<Response> responses = new List<Response>();
             try
             {
-                Response response = new Response();
                 foreach (var item in entities)
                 {
+                    Response response = new Response();
                     response.BlogId = item.BlogId;
                     response.BlogTitle = item.BlogTitle;
                     response.BlogContext = item.BlogContext;

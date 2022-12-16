@@ -10,9 +10,9 @@ namespace API.Example
             List<ExampleEntity> es = new();
             try
             {
-                ExampleEntity e = new();
                 foreach (var item in rs)
                 {
+                    ExampleEntity e = new();
                     e.UserName = item.UserName;
                     e.PasswordHash = item.PasswordHash;
                     es.Add(e);
@@ -30,9 +30,9 @@ namespace API.Example
             List<Response> rs = new();
             try
             {
-                Response r = new();
                 foreach (var item in es)
                 {
+                    Response r = new();
                     r.UserName = item.UserName;
                     r.UserPermissions = null;
                     r.TokenValue = JWTBearer.CreateToken(
