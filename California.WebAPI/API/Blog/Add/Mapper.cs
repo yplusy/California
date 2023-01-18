@@ -6,11 +6,13 @@ namespace API.Blog.Add
     {
         public override async Task<BlogEntity> ToEntityAsync(Request r)
         {
-            return new BlogEntity()
-            {
-                BlogTitle = r.BlogTitle,
-                BlogContext = r.BlogContext,
-            };
+            //return new BlogEntity()
+            //{
+            //    BlogTitle = r.BlogTitle,
+            //    BlogContext = r.BlogContext,
+            //};
+            var db = Resolve<DBContext>();
+            return db.GetPerson(r.Id);
         }
     }
 }
