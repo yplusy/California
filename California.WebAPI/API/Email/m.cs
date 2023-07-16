@@ -1,3 +1,5 @@
+using System.Net.Mail;
+
 namespace California.WebAPI.API.Mail
 {
     public static class Data

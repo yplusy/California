@@ -8,15 +8,15 @@ namespace California.WebAPI.Entities
     {
         [Key]
         [Column(TypeName = "varchar(50)")]
-        public string BlogId { get; set; }
+        public Guid BlogId { get; set; }
 
         [Column(TypeName = "varchar(50)")]
         public string? BlogTitle { get; set; } // 标题
 
-        [Column(TypeName = "varchar(max)")]
+        [Column(TypeName = "varchar(50)")]
         public string? BlogContext { get; set; } // 内容
 
-        [Column(TypeName = "datetime")]
+        [Column(TypeName = "timestamp")]
         public DateTime? CreateTime { get; set; } // 添加时间
     }
 }

@@ -1,8 +1,4 @@
 ﻿using California.WebAPI.Entities;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json;
-using System.Text.Json;
-using California.WebAPI;
 
 namespace API.Blog.Query
 {

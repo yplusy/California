@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
+using System.Reflection.Metadata;
 
 namespace California.WebAPI.Entities
 {
@@ -15,7 +17,9 @@ namespace California.WebAPI.Entities
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<BlogEntity>(e =>
             {
-                e.Property(t => t.CreateTime).HasDefaultValueSql("getdate()"); // 数据库默认值
+                // e.Property(t => t.BlogId).HasValueGenerator<GuidValueGenerator>(); // guid
+                e.Property(t => t.CreateTime).HasDefaultValueSql("gen_random_uuid()"); 
+                e.Property(t => t.CreateTime).HasDefaultValueSql("LOCALTIMESTAMP(0)"); // 数据库默认值
             });
         }
     }

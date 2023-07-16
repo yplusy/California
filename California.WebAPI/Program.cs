@@ -3,7 +3,6 @@ global using FastEndpoints.Security;
 using California.WebAPI.Entities;
 using FastEndpoints.Swagger;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Distributed;
 
 var builder = WebApplication.CreateBuilder();
 
@@ -12,17 +11,16 @@ var builder = WebApplication.CreateBuilder();
 //builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 #endregion
 
-#region SqlServer数据库上下文
-builder.Services.AddDbContext<CaliforniaContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConStr")));
+#region 数据库上下文
+//builder.Services.AddDbContext<CaliforniaContext>(
+//    options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConStr")));
+builder.Services.AddDbContext<CaliforniaContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConStr")));
+//builder.Services.AddDbContext<CaliforniaContext>(
+//    options => options.UseMySQL(builder.Configuration.GetConnectionString("MySQLConStr")));
 #endregion
 
 #region Redis
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-    options.Configuration = builder.Configuration.GetConnectionString("RedisConStr");
-    options.InstanceName = "redis";
-});
+
 #endregion
 
 #region FastEndpoints框架核心
@@ -88,14 +86,14 @@ app.UseSwaggerGen();
 // 默认配置启用swagger的ui
 //app.UseSwaggerUi3(c => c.ConfigureDefaults());
 // 使用分布式缓存
-app.Lifetime.ApplicationStarted.Register(() =>
-{
-    var currentTimeUTC = DateTime.UtcNow.ToString();
-    byte[] encodedCurrentTimeUTC = System.Text.Encoding.UTF8.GetBytes(currentTimeUTC);
-    var options = new DistributedCacheEntryOptions()
-        .SetSlidingExpiration(TimeSpan.FromSeconds(20));
-    app.Services.GetService<IDistributedCache>()
-                              .Set("cachedTimeUTC", encodedCurrentTimeUTC, options);
-});
+//app.Lifetime.ApplicationStarted.Register(() =>
+//{
+//    var currentTimeUTC = DateTime.UtcNow.ToString();
+//    byte[] encodedCurrentTimeUTC = System.Text.Encoding.UTF8.GetBytes(currentTimeUTC);
+//    var options = new DistributedCacheEntryOptions()
+//        .SetSlidingExpiration(TimeSpan.FromSeconds(20));
+//    app.Services.GetService<IDistributedCache>()
+//                              .Set("cachedTimeUTC", encodedCurrentTimeUTC, options);
+//});
 app.Run();
 #endregion

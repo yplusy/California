@@ -1,4 +1,5 @@
 ﻿using California.WebAPI.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Blog.Query
 {
@@ -8,13 +9,13 @@ namespace API.Blog.Query
         {
             if (entity.BlogId == null)
             {
-                var data = db.Blog.ToList();
-                return data;
+                var data = db.Blog.ToListAsync();
+                return await data;
             }
             else
             {
-                var data = db.Blog.Where(b => b.BlogId == entity.BlogId).ToList();
-                return data;
+                var data = db.Blog.Where(b => b.BlogId == entity.BlogId).ToListAsync();
+                return await data;
             }
         }
     }

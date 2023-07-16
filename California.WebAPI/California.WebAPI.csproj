@@ -8,30 +8,38 @@
 
   <ItemGroup>
     <Compile Remove="API\Blog\**" />
+    <Compile Remove="API\Email\**" />
+    <Compile Remove="API\RedisDemo\**" />
+    <Compile Remove="API\Test\**" />
     <Compile Remove="API\User\**" />
     <Content Remove="API\Blog\**" />
+    <Content Remove="API\Email\**" />
+    <Content Remove="API\RedisDemo\**" />
+    <Content Remove="API\Test\**" />
     <Content Remove="API\User\**" />
     <EmbeddedResource Remove="API\Blog\**" />
+    <EmbeddedResource Remove="API\Email\**" />
+    <EmbeddedResource Remove="API\RedisDemo\**" />
+    <EmbeddedResource Remove="API\Test\**" />
     <EmbeddedResource Remove="API\User\**" />
     <None Remove="API\Blog\**" />
+    <None Remove="API\Email\**" />
+    <None Remove="API\RedisDemo\**" />
+    <None Remove="API\Test\**" />
     <None Remove="API\User\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="API\Email\m.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="FastEndpoints" Version="5.6.0" />
-    <PackageReference Include="FastEndpoints.Security" Version="5.6.0" />
-    <PackageReference Include="FastEndpoints.Swagger" Version="5.6.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.13">
+    <PackageReference Include="FastEndpoints" Version="5.13.0" />
+    <PackageReference Include="FastEndpoints.Security" Version="5.13.0" />
+    <PackageReference Include="FastEndpoints.Swagger" Version="5.13.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.19" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.19">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.13" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.8" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.116" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
