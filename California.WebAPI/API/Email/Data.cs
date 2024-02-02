@@ -39,7 +39,7 @@ namespace API.Email
             client.Host = "smtp.qq.com";// SMTP服务器地址
             client.Port = 25; // 端口号
             client.UseDefaultCredentials = true;// SMTP服务器SSL认证
-            client.Credentials = new NetworkCredential("505755935@qq.com", "kzmsndlzmxihcbdf"); // 发件人邮箱的用户和密码(授权码，并不是发件邮箱的密码)
+            client.Credentials = new NetworkCredential("username@qq.com", "授权码code"); // 发件人邮箱的用户和密码(授权码，并不是发件邮箱的密码)
             client.Credentials = CredentialCache.DefaultNetworkCredentials;
 
             try
